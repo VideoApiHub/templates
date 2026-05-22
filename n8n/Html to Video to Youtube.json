@@ -1,0 +1,197 @@
+{
+  "name": "Html to Video to Youtube",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "c296ed9f-8250-4410-b754-34be08bfaed2",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "videoHtml",
+        "html": "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n\n<link href=\"https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Manrope:wght@500;700&display=swap\" rel=\"stylesheet\">\n\n<script src=\"https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js\"></script>\n\n<style>\n*{\n  margin:0;\n  padding:0;\n  box-sizing:border-box;\n}\n\nbody{\n  overflow:hidden;\n  background:#000;\n}\n\n.scene{\n  position:relative;\n  width:1920px;\n  height:1080px;\n  overflow:hidden;\n  background:#1a0d14;\n  font-family:'Outfit',sans-serif;\n  color:#fff;\n}\n\n.bg{\n  position:absolute;\n  inset:0;\n  background:\n    radial-gradient(circle at 80% 15%, #9f1239 0%, transparent 38%),\n    radial-gradient(circle at 12% 85%, #ea580c 0%, transparent 35%),\n    #1a0d14;\n}\n\n.spark{\n  position:absolute;\n  inset:0;\n  background-image:\n    radial-gradient(rgba(255,255,255,0.22) 1px, transparent 1px);\n  background-size:34px 34px;\n  opacity:0.14;\n}\n\n.wrap{\n  position:absolute;\n  inset:0;\n  padding:90px 88px;\n  display:grid;\n  grid-template-columns:1.05fr 0.95fr;\n  gap:34px;\n}\n\n.left{\n  display:flex;\n  flex-direction:column;\n  justify-content:center;\n}\n\n.brand{\n  width:max-content;\n  font-size:22px;\n  letter-spacing:1px;\n  padding:10px 24px;\n  border:1px solid rgba(255,255,255,0.25);\n  border-radius:999px;\n  background:rgba(255,255,255,0.08);\n  backdrop-filter:blur(6px);\n}\n\n.static{\n  margin-top:26px;\n  font-size:88px;\n  font-weight:800;\n  line-height:1.02;\n  letter-spacing:-3px;\n}\n\n.slot{\n  position:relative;\n  height:108px;\n  margin-top:8px;\n  overflow:hidden;\n}\n\n.word{\n  position:absolute;\n  inset:0;\n  font-size:88px;\n  font-weight:800;\n  line-height:1.02;\n  letter-spacing:-3px;\n  opacity:0;\n}\n\n.sub{\n  margin-top:24px;\n  font:500 28px/1.45 'Manrope',sans-serif;\n  color:#fecdd3;\n  max-width:860px;\n}\n\n.card-row{\n  margin-top:30px;\n  display:flex;\n  gap:18px;\n}\n\n.card{\n  width:250px;\n  padding:16px;\n  border-radius:16px;\n  background:rgba(255,255,255,0.08);\n  border:1px solid rgba(255,255,255,0.14);\n  backdrop-filter:blur(10px);\n}\n\n.card h4{\n  font-size:22px;\n}\n\n.card p{\n  margin-top:6px;\n  font:500 15px/1.4 'Manrope',sans-serif;\n  color:#ffe4e6;\n}\n\n.cta{\n  margin-top:24px;\n  width:max-content;\n  font-size:28px;\n  font-weight:700;\n  padding:16px 32px;\n  border-radius:14px;\n  background:linear-gradient(135deg,#f43f5e,#fb7185);\n  box-shadow:0 14px 40px rgba(244,63,94,0.4);\n}\n\n.right{\n  position:relative;\n  display:flex;\n  align-items:center;\n  justify-content:center;\n}\n\n.browser{\n  width:760px;\n  height:720px;\n  border-radius:24px;\n  border:1px solid rgba(255,255,255,0.2);\n  background:rgba(10,8,10,0.55);\n  box-shadow:0 30px 80px rgba(0,0,0,0.4);\n  overflow:hidden;\n  backdrop-filter:blur(10px);\n}\n\n.browser-top{\n  height:54px;\n  display:flex;\n  align-items:center;\n  gap:8px;\n  padding:0 18px;\n  border-bottom:1px solid rgba(255,255,255,0.12);\n}\n\n.dot{\n  width:10px;\n  height:10px;\n  border-radius:50%;\n  background:#fda4af;\n}\n\n.dot:nth-child(2){\n  background:#fdba74;\n}\n\n.dot:nth-child(3){\n  background:#86efac;\n}\n\n.url{\n  margin-left:16px;\n  font:500 14px 'Manrope',sans-serif;\n  color:#fbcfe8;\n  opacity:0.9;\n}\n\n.screen{\n  position:relative;\n  height:calc(100% - 54px);\n}\n\n.screen img{\n  width:100%;\n  height:100%;\n  object-fit:cover;\n  filter:saturate(1.05) contrast(1.03);\n}\n\n.screen::after{\n  content:'';\n  position:absolute;\n  inset:0;\n  background:linear-gradient(\n    180deg,\n    rgba(17,24,39,0.1),\n    rgba(17,24,39,0.42)\n  );\n}\n\n.product{\n  position:absolute;\n  right:-12px;\n  width:240px;\n  border-radius:16px;\n  background:rgba(255,255,255,0.94);\n  color:#111827;\n  box-shadow:0 16px 36px rgba(0,0,0,0.35);\n  padding:14px;\n}\n\n.p1{\n  top:160px;\n}\n\n.p2{\n  top:420px;\n}\n\n.thumb{\n  width:100%;\n  height:110px;\n  border-radius:10px;\n  object-fit:cover;\n}\n\n.price{\n  margin-top:8px;\n  font:800 24px 'Outfit',sans-serif;\n}\n\n.name{\n  margin-top:2px;\n  font:700 15px 'Manrope',sans-serif;\n  color:#374151;\n}\n\n/* OUTRO */\n\n.outro{\n  position:absolute;\n  inset:0;\n  display:flex;\n  flex-direction:column;\n  align-items:center;\n  justify-content:center;\n  background:\n    radial-gradient(circle at center,\n    rgba(244,63,94,0.22),\n    rgba(0,0,0,0.95));\n  backdrop-filter:blur(12px);\n  z-index:20;\n  opacity:0;\n}\n\n.outro-title{\n  font-size:150px;\n  font-weight:800;\n  line-height:1;\n  letter-spacing:-6px;\n\n  background:linear-gradient(\n    135deg,\n    #fff,\n    #fda4af,\n    #fb7185\n  );\n\n  -webkit-background-clip:text;\n  -webkit-text-fill-color:transparent;\n\n  opacity:0;\n  transform:translateY(40px);\n}\n\n.outro-url{\n  margin-top:28px;\n  font-size:62px;\n  font-weight:700;\n  color:#fff;\n\n  opacity:0;\n  transform:translateY(20px);\n}\n\n.outro-sale{\n  margin-top:28px;\n  padding:18px 34px;\n  border-radius:999px;\n\n  background:rgba(255,255,255,0.08);\n\n  border:1px solid rgba(255,255,255,0.18);\n\n  font-size:34px;\n  color:#fecdd3;\n  font-weight:700;\n\n  opacity:0;\n  transform:scale(0.8);\n}\n</style>\n</head>\n\n<body>\n\n<div\n  id=\"comp\"\n  data-composition-id=\"ecommerce-demo\"\n  data-start=\"0\"\n  data-width=\"1920\"\n  data-height=\"1080\"\n  class=\"scene\"\n>\n\n  <div id=\"bg\" class=\"bg\"></div>\n  <div id=\"spark\" class=\"spark\"></div>\n\n  <div id=\"wrap\" class=\"wrap\">\n\n    <div class=\"left\">\n\n      <div id=\"brand\" class=\"brand\">\n        ShopMe Summer Sale\n      </div>\n\n      <div id=\"static\" class=\"static\">\n        Turn browsers into\n      </div>\n\n      <div class=\"slot\">\n        <div id=\"w1\" class=\"word\" style=\"color:#fb7185;\">\n          loyal customers\n        </div>\n\n        <div id=\"w2\" class=\"word\" style=\"color:#f59e0b;\">\n          viral purchases\n        </div>\n\n        <div id=\"w3\" class=\"word\" style=\"color:#22d3ee;\">\n          trending reels\n        </div>\n\n        <div id=\"w4\" class=\"word\" style=\"color:#86efac;\">\n          flash sale conversions\n        </div>\n      </div>\n\n      <div id=\"sub\" class=\"sub\">\n        Discover premium fashion, sneakers, accessories,\n        and limited-time summer deals.\n      </div>\n\n      <div id=\"cards\" class=\"card-row\">\n\n        <div id=\"c1\" class=\"card\">\n          <h4>70% OFF</h4>\n          <p>Limited-time summer collection discounts</p>\n        </div>\n\n        <div id=\"c2\" class=\"card\">\n          <h4>Fast Delivery</h4>\n          <p>2-day shipping on selected products</p>\n        </div>\n\n        <div id=\"c3\" class=\"card\">\n          <h4>Trending Styles</h4>\n          <p>Viral looks inspired by creators</p>\n        </div>\n\n      </div>\n\n      <div id=\"cta\" class=\"cta\">\n        Shop The Sale\n      </div>\n\n    </div>\n\n    <div class=\"right\">\n\n      <div id=\"browser\" class=\"browser\">\n\n        <div class=\"browser-top\">\n          <div class=\"dot\"></div>\n          <div class=\"dot\"></div>\n          <div class=\"dot\"></div>\n\n          <div class=\"url\">\n            shopme.com/summer-sale\n          </div>\n        </div>\n\n        <div class=\"screen\">\n          <img\n            src=\"https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1600&auto=format&fit=crop\"\n          />\n        </div>\n\n      </div>\n\n      <div id=\"p1\" class=\"product p1\">\n        <img\n          class=\"thumb\"\n          src=\"https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop\"\n        />\n\n        <div class=\"price\">$89</div>\n        <div class=\"name\">Aero Runner Pro</div>\n      </div>\n\n      <div id=\"p2\" class=\"product p2\">\n        <img\n          class=\"thumb\"\n          src=\"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop\"\n        />\n\n        <div class=\"price\">$129</div>\n        <div class=\"name\">Pulse Jacket 2.0</div>\n      </div>\n\n    </div>\n\n  </div>\n\n  <!-- OUTRO -->\n\n  <div id=\"outro\" class=\"outro\">\n\n    <div id=\"outro-title\" class=\"outro-title\">\n      SHOP NOW\n    </div>\n\n    <div id=\"outro-url\" class=\"outro-url\">\n      shopme.com\n    </div>\n\n    <div id=\"outro-sale\" class=\"outro-sale\">\n      Sale lasts till 25th May\n    </div>\n\n  </div>\n\n</div>\n\n<script>\n\nwindow.__timelines = window.__timelines || {};\n\nconst tl = gsap.timeline({\n  paused:true\n});\n\ngsap.set(\"#w1,#w2,#w3,#w4\", {\n  opacity:0,\n  y:60\n});\n\ngsap.set(\"#c1,#c2,#c3\", {\n  opacity:0,\n  y:26\n});\n\ngsap.set(\"#browser,#p1,#p2\", {\n  opacity:0,\n  y:30,\n  scale:0.96\n});\n\ntl\n\n.from(\"#brand\", {\n  y:20,\n  opacity:0,\n  duration:0.4\n}, 0.1)\n\n.from(\"#static\", {\n  y:34,\n  opacity:0,\n  duration:0.6\n}, 0.3)\n\n.from(\"#sub\", {\n  y:20,\n  opacity:0,\n  duration:0.45\n}, 0.7)\n\n.to(\"#c1\", {\n  opacity:1,\n  y:0,\n  duration:0.35\n}, 0.9)\n\n.to(\"#c2\", {\n  opacity:1,\n  y:0,\n  duration:0.35\n}, 1.05)\n\n.to(\"#c3\", {\n  opacity:1,\n  y:0,\n  duration:0.35\n}, 1.2)\n\n.to(\"#browser\", {\n  opacity:1,\n  y:0,\n  scale:1,\n  duration:0.6,\n  ease:\"power3.out\"\n}, 0.8)\n\n.to(\"#p1\", {\n  opacity:1,\n  y:0,\n  scale:1,\n  duration:0.5,\n  ease:\"power3.out\"\n}, 1.15)\n\n.to(\"#p2\", {\n  opacity:1,\n  y:0,\n  scale:1,\n  duration:0.5,\n  ease:\"power3.out\"\n}, 1.35)\n\n.from(\"#cta\", {\n  scale:0.9,\n  opacity:0,\n  duration:0.4,\n  ease:\"back.out(1.7)\"\n}, 1.25)\n\n.to(\"#w1\", {\n  opacity:1,\n  y:0,\n  duration:0.35\n}, 1)\n\n.to(\"#w1\", {\n  opacity:0,\n  y:-42,\n  duration:0.35\n}, 3)\n\n.to(\"#w2\", {\n  opacity:1,\n  y:0,\n  duration:0.35\n}, 3.3)\n\n.to(\"#w2\", {\n  opacity:0,\n  y:-42,\n  duration:0.35\n}, 5.4)\n\n.to(\"#w3\", {\n  opacity:1,\n  y:0,\n  duration:0.35\n}, 5.7)\n\n.to(\"#w3\", {\n  opacity:0,\n  y:-42,\n  duration:0.35\n}, 7.8)\n\n.to(\"#w4\", {\n  opacity:1,\n  y:0,\n  duration:0.35\n}, 8.1)\n\n.to(\"#spark\", {\n  y:-80,\n  duration:12,\n  ease:\"none\"\n}, 0)\n\n.to(\"#browser\", {\n  y:-8,\n  duration:1.8,\n  yoyo:true,\n  repeat:4,\n  ease:\"sine.inOut\"\n}, 1.8)\n\n.to(\"#p1\", {\n  rotation:-4,\n  duration:1.6,\n  yoyo:true,\n  repeat:3,\n  ease:\"sine.inOut\"\n}, 2)\n\n.to(\"#p2\", {\n  rotation:4,\n  duration:1.6,\n  yoyo:true,\n  repeat:3,\n  ease:\"sine.inOut\"\n}, 2.25)\n\n.to(\"#cta\", {\n  scale:1.05,\n  duration:0.35,\n  repeat:2,\n  yoyo:true\n}, 4)\n\n.to(\"#wrap\", {\n  opacity:0,\n  duration:0.8,\n  scale:1.04,\n  filter:\"blur(10px)\",\n  ease:\"power2.inOut\"\n}, 11.8)\n\n.to(\"#outro\", {\n  opacity:1,\n  duration:0.6\n}, 12.1)\n\n.to(\"#outro-title\", {\n  opacity:1,\n  y:0,\n  duration:0.8,\n  ease:\"power4.out\"\n}, 12.3)\n\n.to(\"#outro-url\", {\n  opacity:1,\n  y:0,\n  duration:0.6,\n  ease:\"power3.out\"\n}, 12.55)\n\n.to(\"#outro-sale\", {\n  opacity:1,\n  scale:1,\n  duration:0.6,\n  ease:\"back.out(1.7)\"\n}, 12.8)\n\n.to(\"#outro-title\", {\n  scale:1.04,\n  duration:0.8,\n  yoyo:true,\n  repeat:1,\n  ease:\"sine.inOut\"\n}, 13.2);\n\nwindow.__timelines[\"ecommerce-demo\"] = tl;\n\ntl.play(0);\n\n</script>\n\n</body>\n</html>",
+        "outputOptions": {}
+      },
+      "type": "n8n-nodes-video-api-hub.videoApiHub",
+      "typeVersion": 1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "d7843e49-7041-441e-8888-3aeda25eee77",
+      "name": "Create a video from an HTML composition",
+      "credentials": {
+        "videoApiHubApi": {
+          "id": "segM5RYWkjCkeokm",
+          "name": "VideoApiHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "job",
+        "taskId": "={{ $json.task_id }}"
+      },
+      "type": "n8n-nodes-video-api-hub.videoApiHub",
+      "typeVersion": 1,
+      "position": [
+        416,
+        0
+      ],
+      "id": "83ea3593-fd1b-48ec-8efc-a726b2b63009",
+      "name": "Get the result of a job",
+      "credentials": {
+        "videoApiHubApi": {
+          "id": "segM5RYWkjCkeokm",
+          "name": "VideoApiHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "video",
+        "operation": "upload",
+        "title": "E Commerce Demo Video using Video API Hub",
+        "regionCode": "US",
+        "categoryId": "28",
+        "options": {
+          "description": "This is an e commerce demo video created using video api hub",
+          "tags": "videoautomation, n8n, videoapihub"
+        }
+      },
+      "type": "n8n-nodes-base.youTube",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        0
+      ],
+      "id": "94c16cc7-20d0-4ea8-a225-db026ada536a",
+      "name": "Upload a video",
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "pFnm3xfucbWy3xQ8",
+          "name": "YouTube account-videoapihub"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "videoAudio",
+        "input": "https://videoapihub-prod-uploads-374316755264.s3.us-east-1.amazonaws.com/outputs/20260522/c5953349-9318-4672-a6bc-6afedb6ce96d.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAVOJYENFALR24WIOB%2F20260522%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260522T083345Z&X-Amz-Expires=900&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEE8aCXVzLWVhc3QtMSJGMEQCIBfyDTqTFJd7H3AKBbox%2FhQ09BKaQlvhuEzceQcAXlYQAiBkAyPPfb%2Bygq8FIJlOELDIrD9MhdjRatPidxT8Jh7e3Sq4BQgYEAAaDDM3NDMxNjc1NTI2NCIM45O31Hbk8EPmWFsZKpUFglHoN7BzYSNdjJY7yL%2BW%2BfSxGrSRx%2BNT3ZU0xHlxfJHPejaO0SAqssUC2Y1eBVQQkPVxvYzMk09wgGujxgwLQr66xW5%2Fa5S9Owo7aD8MNGFwi8BrSM1%2FEiqqrsf7xVDfFCf1rl77sUOikairRK1bBMhSjIMgHT9PV434ckHS8Xxz%2BBbjYB%2F4NpPJI%2FUIID1IbMawjFKTO2o8dgtsatrWEXubS6MIumfDqz9%2BhcNOkyFAlwTMVcmoo7ukOINiut9KdsznzanU0Am8PqZmZnytobPKph%2BkQSqx%2FXBnhQFMzEsow4xrt2rM6NYoBIIBAoxNtiU0hvwpsm6RKR298Q%2BSdAtjUBeU%2FNPMgRs%2FxHoEOaacM0lulSgf67jsIwez4uZIwDDbZl%2B%2F5PHZB9j1aEflg4ewRcYUbiIZcL%2B58sIydmG2b5gE%2FgBM6SA%2ByjafqUF5FbsqV02SYaGzQTjf5OBln2dyLFLF36%2BxRU8JEbOFJLIkFNaANZ%2B8Gc0sSH1akX3tqFxcCLBUsqCRjdaTCYTmObccGHlDnKnqD9A8WDo4I7jRw09RkFMX%2B5GvCuV6Lowdv%2BaOGVcvDsS4k0a1oF%2FwE%2B4HyKIKvEnj1DlgxgRLChzmvCHIFeRbK9yGLzJAq%2FejV%2FasvJwczfJxtR3hdwBZUsuFGhyGFY97b%2BHi53bRJO4LiOC5eE1wb7t6M4soVsxXu2TKtb3fGHIhO6HbitKxCmcrbYSL2oJhurXu8BtJAaNYCfSemyYTwF62UyoribmhHWd0glm8g6p4G1SAs7R0S1sod5mYEkFDSZ6dzGjaEQtdhi4GJE5GJvt%2F6mGSkXoSw7JaPlF%2FI8vO8une3Iy%2BnfDNx21aZgCm%2BQEnnsBupc5f6oODUjDy%2Fr%2FQBjqyAZ828KhTxlZlgJira9q%2BwF7knBCreP11B9CbMKdx1sgkEnbwQpEwx1NzAOUTXfx7tRiYurn84k2U4iEWT9MOdCDBA%2B7k7KoXHTInSxJ%2FslQF5TQjjXMmqzQ38CpVJakjTn7ll7KYxXn2GKgRh5BCdUOhkMdqIvvlU3JruaXz6zgKVNppzU0zcLsiPXby%2F61SYLhv1hrV3D15kZJkw2nPFnSerxCsU42%2FwmD1LMV7zFAF2rA%3D&X-Amz-SignedHeaders=host&x-id=GetObject&X-Amz-Signature=b6d451592b0852a1f844d5468b390c00e6070c758511ab677a853971d8514a45",
+        "outputOptions": {},
+        "audioKey": "https://videoapihub-prod-uploads-374316755264.s3.us-east-1.amazonaws.com/uploads/20260522/genzbeats-future-trap-energy-409-194fc06c-ddbc-445c-ab49-b34270f757c0-genzbeats-future-trap-energy-409429.mp3?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAVOJYENFALR24WIOB%2F20260522%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260522T083620Z&X-Amz-Expires=900&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEE8aCXVzLWVhc3QtMSJGMEQCIBfyDTqTFJd7H3AKBbox%2FhQ09BKaQlvhuEzceQcAXlYQAiBkAyPPfb%2Bygq8FIJlOELDIrD9MhdjRatPidxT8Jh7e3Sq4BQgYEAAaDDM3NDMxNjc1NTI2NCIM45O31Hbk8EPmWFsZKpUFglHoN7BzYSNdjJY7yL%2BW%2BfSxGrSRx%2BNT3ZU0xHlxfJHPejaO0SAqssUC2Y1eBVQQkPVxvYzMk09wgGujxgwLQr66xW5%2Fa5S9Owo7aD8MNGFwi8BrSM1%2FEiqqrsf7xVDfFCf1rl77sUOikairRK1bBMhSjIMgHT9PV434ckHS8Xxz%2BBbjYB%2F4NpPJI%2FUIID1IbMawjFKTO2o8dgtsatrWEXubS6MIumfDqz9%2BhcNOkyFAlwTMVcmoo7ukOINiut9KdsznzanU0Am8PqZmZnytobPKph%2BkQSqx%2FXBnhQFMzEsow4xrt2rM6NYoBIIBAoxNtiU0hvwpsm6RKR298Q%2BSdAtjUBeU%2FNPMgRs%2FxHoEOaacM0lulSgf67jsIwez4uZIwDDbZl%2B%2F5PHZB9j1aEflg4ewRcYUbiIZcL%2B58sIydmG2b5gE%2FgBM6SA%2ByjafqUF5FbsqV02SYaGzQTjf5OBln2dyLFLF36%2BxRU8JEbOFJLIkFNaANZ%2B8Gc0sSH1akX3tqFxcCLBUsqCRjdaTCYTmObccGHlDnKnqD9A8WDo4I7jRw09RkFMX%2B5GvCuV6Lowdv%2BaOGVcvDsS4k0a1oF%2FwE%2B4HyKIKvEnj1DlgxgRLChzmvCHIFeRbK9yGLzJAq%2FejV%2FasvJwczfJxtR3hdwBZUsuFGhyGFY97b%2BHi53bRJO4LiOC5eE1wb7t6M4soVsxXu2TKtb3fGHIhO6HbitKxCmcrbYSL2oJhurXu8BtJAaNYCfSemyYTwF62UyoribmhHWd0glm8g6p4G1SAs7R0S1sod5mYEkFDSZ6dzGjaEQtdhi4GJE5GJvt%2F6mGSkXoSw7JaPlF%2FI8vO8une3Iy%2BnfDNx21aZgCm%2BQEnnsBupc5f6oODUjDy%2Fr%2FQBjqyAZ828KhTxlZlgJira9q%2BwF7knBCreP11B9CbMKdx1sgkEnbwQpEwx1NzAOUTXfx7tRiYurn84k2U4iEWT9MOdCDBA%2B7k7KoXHTInSxJ%2FslQF5TQjjXMmqzQ38CpVJakjTn7ll7KYxXn2GKgRh5BCdUOhkMdqIvvlU3JruaXz6zgKVNppzU0zcLsiPXby%2F61SYLhv1hrV3D15kZJkw2nPFnSerxCsU42%2FwmD1LMV7zFAF2rA%3D&X-Amz-SignedHeaders=host&x-id=GetObject&X-Amz-Signature=6fb80cf9fadae2167010a439a288c4072b856a51deb462c4dce27e7264a7c5e8",
+        "audioOptions": {}
+      },
+      "type": "n8n-nodes-video-api-hub.videoApiHub",
+      "typeVersion": 1,
+      "position": [
+        624,
+        0
+      ],
+      "id": "4ec85a37-9a06-4b07-abf8-6ab5af42830b",
+      "name": "Add audio to a video",
+      "credentials": {
+        "videoApiHubApi": {
+          "id": "segM5RYWkjCkeokm",
+          "name": "VideoApiHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "job",
+        "taskId": "={{ $json.task_id }}"
+      },
+      "type": "n8n-nodes-video-api-hub.videoApiHub",
+      "typeVersion": 1,
+      "position": [
+        832,
+        0
+      ],
+      "id": "2bce4996-7c1e-4134-8e1e-7c9a947c2e6b",
+      "name": "Get the result of a job1",
+      "credentials": {
+        "videoApiHubApi": {
+          "id": "segM5RYWkjCkeokm",
+          "name": "VideoApiHub account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Create a video from an HTML composition",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a video from an HTML composition": {
+      "main": [
+        [
+          {
+            "node": "Get the result of a job",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get the result of a job": {
+      "main": [
+        [
+          {
+            "node": "Add audio to a video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add audio to a video": {
+      "main": [
+        [
+          {
+            "node": "Get the result of a job1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get the result of a job1": {
+      "main": [
+        [
+          {
+            "node": "Upload a video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "59db89b4-d458-4f9e-ac10-af7405cf21f0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "277842713620d9f5554de3b1518b865a152c8c4db680008bd8aec536fc18b4a8"
+  },
+  "id": "fm6nxVs7LYjSFkHQ",
+  "tags": []
+}
