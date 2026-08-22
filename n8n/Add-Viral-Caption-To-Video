@@ -1,0 +1,81 @@
+{
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "af7b66ce-6cd6-41ce-b30d-7a9b3fe032ff",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "videoCaption",
+        "inputKey": "https://videoapihub-prod-uploads-374316755264.s3.us-east-1.amazonaws.com/uploads/20260724/caption1-fitness-coach-talking-a-8b6a2657-603e-4f4d-bd93-702aa8bf71b1-Caption1-Fitness_coach_talking_about_abs_202607241535.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAVOJYENFAKV3C36LZ%2F20260822%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260822T104446Z&X-Amz-Expires=900&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPL%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCICHsm92%2Bzg92h3Qexx7JwnoxMMM5QlIz6GBpn6Xnc%2FPBAiEA4coAGAd2TNJ9PkYqvkKFi8CsnXAzX9WkD0tEW2kZSY0qwQUIu%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwzNzQzMTY3NTUyNjQiDMq9u46ULeOdwHNkZCqVBYuiXljG2k2lFbFEspKU1DehKs7Y1gapG4dhxPswh8Nk3glLLnToHrNXnCaRMmOdtO%2FYEfDJj%2FQi2DeXOy4M1rhlKlxRbGUQGs%2F1cRAI5RFj5jxsKjcPlV0r7S6DpVgOXusPTqfW5dXaDM81ZDVDdOXWwi4LM9ApG7cCS9XH1P98xu4ne1JL30OUmZFKkYGJTQcjss%2BKS%2FFCmjQk66wsxJ4XIyBdS6HTHSviLopBW85ZjXNT%2BXTRxhhiAJ8sIKjDQ%2FHYRfNNqQec%2FT%2Bg8uxoS%2F3vaXQAirsTyvEvdZKucFVx%2B5Ilx%2FF%2FhRiMhRPIrstoQQuZmLyp7aRbfSy5%2F%2FUye7HvbbHgJJJFTjUiEpZjHNGZBX4M1Rs05mFRMAjzvuCn9eb31jF3ycQSzR5gxuB8qbgQCT1N%2Bzxf2YH6uWECfJQifYdul%2F2aaO0ZsrIvX7qkbXOyu%2F7%2F%2F%2F2T7aXLaweNj5jTiLorylUCRyH827kJWqwpQlhSaL8xQAOXtVaY6Z%2FiDuypK5ImcHmfPWcK0MTxziDIM1HNve3zmRDW6m%2FoTBOR6hyio1LWc6Mz4JK%2FF0qM%2FNpUSQ2YDdde7Z669aT69Qhx2crlvAZRTuU8h2yubRJCfNqvSi3r%2BQZShuJu7fgNhSDQc4Q15PXPCvI1pGRnYCBr0337VnjKbEPdAItRwXGrCahkXQJ2cZk6%2FNYS6fO5bQORLhA5h%2BTKIz3gRR%2FIUJPUfynDUFKFR634Hba6jWTK%2BITOQyLPCJbfIGtQHsTO0mN8CcXUoAfBSTA1qM3yhP0AOBGRMk%2F4NKFaB3kavnYh9Ikma9Gk95EIJOWD6gDVDTaEfavo7aszRyeyxfQE4BOkIcW2TnbdtiljJOau88yiASQMknww3Nul1AY6sQEQPKvUU%2B0TUWV1I4e4hKco6K7OlNu7kokx3QxSXvOKlrgy48iNGtZXUryI%2Flj3n7TnTjRBRdFosKfxcW80GtK652YoifafSiOMZ3EDoeFSKz5plJTlcpjXfByH1Is8G3rPYsbnctH3y8pDZg4ck3KhEvMyZ8WpmPPJHLB2PLV4T9tkaK7AZHAYu4Lxi%2B86JauY%2FXCv24BpYFyg1omnjRheWJOpF1oQY3odiZ5qhSkw%2BFY%3D&X-Amz-SignedHeaders=host&x-id=GetObject&X-Amz-Signature=baa78d5fd44f12dc94c68e455d8389e6ef12b8dd8c80f1a89e45d8ff8f1861d6",
+        "stylePreset": "kinetic-typography",
+        "outputOptions": {}
+      },
+      "type": "n8n-nodes-video-api-hub.videoApiHub",
+      "typeVersion": 1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "4352af9e-c363-459b-a49c-005e184b0d88",
+      "name": "Add stylish captions to a video",
+      "credentials": {
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "job",
+        "taskId": "={{ $json.task_id }}"
+      },
+      "type": "n8n-nodes-video-api-hub.videoApiHub",
+      "typeVersion": 1,
+      "position": [
+        416,
+        0
+      ],
+      "id": "0f517406-71b3-4e06-8f9d-e02a9ebeeb00",
+      "name": "Get the result of a job",
+      "credentials": {
+        "videoApiHubApi": {
+        }
+      }
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Add stylish captions to a video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add stylish captions to a video": {
+      "main": [
+        [
+          {
+            "node": "Get the result of a job",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "277842713620d9f5554de3b1518b865a152c8c4db680008bd8aec536fc18b4a8"
+  }
+}
